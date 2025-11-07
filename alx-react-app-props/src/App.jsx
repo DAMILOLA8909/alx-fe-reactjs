@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfilePage from './components/ProfilePage';
-import UserContext from './context/UserContext'; // Default import
+import UserProfile from './components/UserProfile';
+import UserContext from './components/UserContext';
 
 function App() {
   const userData = { 
@@ -15,7 +15,7 @@ function App() {
     <UserContext.Provider value={userData}>
       <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
         <h1 style={{ color: '#2c3e50', textAlign: 'center' }}>User Profile App</h1>
-        <ProfilePage />
+        <UserProfile />
       </div>
     </UserContext.Provider>
   );
