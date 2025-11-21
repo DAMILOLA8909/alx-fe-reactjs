@@ -8,8 +8,7 @@ A modern, responsive React application for searching GitHub users with advanced 
 
 ## 🚀 Live Demo
 
-[**View Live Application**](https://alx-fe-reactjs-nine-iota.vercel.app) *(Replace with your actual Vercel URL)*
-
+[**View Live Application**](https://alx-fe-reactjs-nine-iota.vercel.app)
 ## ✨ Features
 
 ### 🔍 Advanced Search
