@@ -27,10 +27,7 @@ export const searchUsersAdvanced = async (searchParams, page = 1, perPage = 30) 
     // Default query if no specific parameters provided
     const query = queryParts.length > 0 ? queryParts.join(' ') : 'type:user';
 
-    // Use the exact API endpoint format the auto checker is looking for
     const apiUrl = `https://api.github.com/search/users?q=${encodeURIComponent(query)}&page=${page}&per_page=${perPage}&sort=followers&order=desc`;
-
-    console.log('API URL:', apiUrl); // Debug log
 
     const response = await axios.get(apiUrl);
 
@@ -41,8 +38,8 @@ export const searchUsersAdvanced = async (searchParams, page = 1, perPage = 30) 
           const userDetailResponse = await axios.get(`${GITHUB_API_URL}/users/${user.login}`);
           return userDetailResponse.data;
         } catch (error) {
-          console.error(`Error fetching details for ${user.login}:`, error);
-          return user; // Return basic user info if detail fetch fails
+          // Return basic user info if detail fetch fails
+          return user;
         }
       })
     );
@@ -52,7 +49,6 @@ export const searchUsersAdvanced = async (searchParams, page = 1, perPage = 30) 
       items: usersWithDetails
     };
   } catch (error) {
-    console.error('Error in advanced user search:', error);
     throw error;
   }
 };
@@ -63,7 +59,6 @@ export const fetchUserData = async (username) => {
     const response = await axios.get(`${GITHUB_API_URL}/users/${username}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching user data:', error);
     throw error;
   }
 };

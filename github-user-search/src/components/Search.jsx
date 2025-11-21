@@ -15,7 +15,6 @@ const Search = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
 
-  // Required: Handle input change with target.value
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSearchData(prev => ({
@@ -39,7 +38,6 @@ const Search = () => {
     setError('');
     
     try {
-      // API request handling for advanced search
       const result = await searchUsersAdvanced(searchData, pageNum);
       
       if (pageNum === 1) {
@@ -51,7 +49,6 @@ const Search = () => {
       setPage(pageNum);
       setHasMore(!!result.items?.length && result.total_count > pageNum * 30);
     } catch (err) {
-      // Required: Display specific error message
       if (err.response && err.response.status === 404) {
         setError('Looks like we cant find the user');
       } else if (err.response && err.response.status === 403) {
@@ -59,22 +56,19 @@ const Search = () => {
       } else {
         setError('An error occurred while fetching user data. Please try again.');
       }
-      console.error('Search error:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Simple search function for basic username search (to satisfy previous requirements)
   const handleSimpleSearch = async (username) => {
     setLoading(true);
     setError('');
     setUsers([]);
     
     try {
-      // Required: Proper call of the API endpoint for basic search
       const userData = await fetchUserData(username);
-      setUsers([userData]); // Convert to array to work with existing display logic
+      setUsers([userData]);
     } catch (err) {
       if (err.response && err.response.status === 404) {
         setError('Looks like we cant find the user');
@@ -101,11 +95,9 @@ const Search = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Search Form */}
         <div className="bg-white rounded-2xl shadow-xl p-6 mb-8 border border-gray-200">
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">GitHub User Search</h2>
           
-          {/* Simple Username Search (for previous task requirements) */}
           <div className="mb-6 p-4 bg-blue-50 rounded-lg">
             <h3 className="text-lg font-semibold text-gray-700 mb-3">Quick Search by Username</h3>
             <form onSubmit={(e) => {
@@ -118,7 +110,7 @@ const Search = () => {
                 type="text"
                 name="username"
                 value={searchData.username}
-                onChange={handleInputChange} // Required: uses target.value
+                onChange={handleInputChange}
                 placeholder="Enter GitHub username..."
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
@@ -132,11 +124,9 @@ const Search = () => {
             </form>
           </div>
 
-          {/* Advanced Search Form */}
           <h3 className="text-xl font-semibold text-gray-700 mb-4">Advanced Search</h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Username */}
               <div className="space-y-2">
                 <label htmlFor="username" className="block text-sm font-semibold text-gray-700">
                   Username
@@ -146,13 +136,12 @@ const Search = () => {
                   id="username"
                   name="username"
                   value={searchData.username}
-                  onChange={handleInputChange} // Required: uses target.value
+                  onChange={handleInputChange}
                   placeholder="e.g., octocat"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
-              {/* Location */}
               <div className="space-y-2">
                 <label htmlFor="location" className="block text-sm font-semibold text-gray-700">
                   Location
@@ -162,13 +151,12 @@ const Search = () => {
                   id="location"
                   name="location"
                   value={searchData.location}
-                  onChange={handleInputChange} // Required: uses target.value
+                  onChange={handleInputChange}
                   placeholder="e.g., San Francisco"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
-              {/* Minimum Repositories */}
               <div className="space-y-2">
                 <label htmlFor="minRepos" className="block text-sm font-semibold text-gray-700">
                   Min Repositories
@@ -178,14 +166,13 @@ const Search = () => {
                   id="minRepos"
                   name="minRepos"
                   value={searchData.minRepos}
-                  onChange={handleInputChange} // Required: uses target.value
+                  onChange={handleInputChange}
                   placeholder="e.g., 10"
                   min="0"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
-              {/* Programming Language */}
               <div className="space-y-2">
                 <label htmlFor="language" className="block text-sm font-semibold text-gray-700">
                   Language
@@ -195,13 +182,12 @@ const Search = () => {
                   id="language"
                   name="language"
                   value={searchData.language}
-                  onChange={handleInputChange} // Required: uses target.value
+                  onChange={handleInputChange}
                   placeholder="e.g., JavaScript"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
-              {/* Followers */}
               <div className="space-y-2">
                 <label htmlFor="followers" className="block text-sm font-semibold text-gray-700">
                   Min Followers
@@ -211,7 +197,7 @@ const Search = () => {
                   id="followers"
                   name="followers"
                   value={searchData.followers}
-                  onChange={handleInputChange} // Required: uses target.value
+                  onChange={handleInputChange}
                   placeholder="e.g., 100"
                   min="0"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
@@ -219,7 +205,6 @@ const Search = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 type="submit"
@@ -250,7 +235,6 @@ const Search = () => {
           </form>
         </div>
 
-        {/* Loading State */}
         {loading && (
           <div className="flex flex-col items-center justify-center py-12">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mb-4"></div>
@@ -258,7 +242,6 @@ const Search = () => {
           </div>
         )}
 
-        {/* Error State - Required: Contains exact error message */}
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-xl p-6 mb-6">
             <div className="flex items-center">
@@ -270,7 +253,6 @@ const Search = () => {
           </div>
         )}
 
-        {/* Results Display */}
         {users.length > 0 && (
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -331,7 +313,6 @@ const Search = () => {
               ))}
             </div>
 
-            {/* Load More Button for advanced search */}
             {hasMore && users.length > 1 && (
               <div className="flex justify-center pt-8">
                 <button
@@ -346,7 +327,6 @@ const Search = () => {
           </div>
         )}
 
-        {/* Empty State */}
         {!loading && users.length === 0 && !error && (
           <div className="text-center py-16">
             <div className="text-gray-300 text-8xl mb-6">👥</div>
@@ -361,4 +341,5 @@ const Search = () => {
   );
 };
 
+// Make sure this default export is present
 export default Search;
