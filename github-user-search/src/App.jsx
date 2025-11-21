@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
-import UserCard from './components/UserCard';
-import { searchUsers } from './services/githubAPI';
+import UserProfile from './components/UserProfile';
+import { fetchUserData } from './services/githubAPI';
 import './App.css';
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (username) => {
     setLoading(true);
     setError('');
+    setUser(null);
     
     try {
-      const result = await searchUsers(query);
-      setUsers(result.items || []);
+      const userData = await fetchUserData(username);
+      setUser(userData);
     } catch (err) {
-      setError('Failed to search users. Please try again.');
+      if (err.response && err.response.status === 404) {
+        setError('User not found. Please check the username and try again.');
+      } else if (err.response && err.response.status === 403) {
+        setError('API rate limit exceeded. Please wait a moment and try again.');
+      } else {
+        setError('An error occurred while fetching user data. Please try again.');
+      }
       console.error('Search error:', err);
     } finally {
       setLoading(false);
@@ -32,20 +39,8 @@ function App() {
       </header>
       
       <main className="App-main">
-        <SearchBar onSearch={handleSearch} />
-        
-        {loading && <p className="loading">Searching...</p>}
-        {error && <p className="error">{error}</p>}
-        
-        <div className="users-grid">
-          {users.map(user => (
-            <UserCard key={user.id} user={user} />
-          ))}
-        </div>
-        
-        {users.length === 0 && !loading && !error && (
-          <p className="no-results">No users found. Try searching for a GitHub username.</p>
-        )}
+        <SearchBar onSearch={handleSearch} loading={loading} />
+        <UserProfile user={user} error={error} loading={loading} />
       </main>
     </div>
   );

@@ -9,24 +9,24 @@ const githubAPI = axios.create({
   },
 });
 
-// Search GitHub users
+// Fetch individual user data
+export const fetchUserData = async (username) => {
+  try {
+    const response = await githubAPI.get(`/users/${username}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    throw error;
+  }
+};
+
+// Search GitHub users (multiple results)
 export const searchUsers = async (query) => {
   try {
     const response = await githubAPI.get(`/search/users?q=${query}`);
     return response.data;
   } catch (error) {
     console.error('Error searching users:', error);
-    throw error;
-  }
-};
-
-// Get user details
-export const getUserDetails = async (username) => {
-  try {
-    const response = await githubAPI.get(`/users/${username}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching user details:', error);
     throw error;
   }
 };
