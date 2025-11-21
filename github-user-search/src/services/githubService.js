@@ -12,3 +12,5 @@ export const fetchUserData = async (username) => {
     throw error;
   }
 };
+
+export default fetchUserData;

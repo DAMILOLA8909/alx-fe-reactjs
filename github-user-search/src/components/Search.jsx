@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { fetchUserData } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -14,12 +15,8 @@ const Search = () => {
       setUser(null);
       
       try {
-        // Simple fetch instead of axios to avoid dependencies
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        if (!response.ok) {
-          throw new Error('User not found');
-        }
-        const userData = await response.json();
+        // Using fetchUserData from the service
+        const userData = await fetchUserData(username);
         setUser(userData);
       } catch (err) {
         setError('Looks like we cant find the user');
