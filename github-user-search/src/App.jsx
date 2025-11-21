@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SearchBar from './components/SearchBar';
+import Search from './components/Search';  // Changed from SearchBar
 import UserProfile from './components/UserProfile';
-import { fetchUserData } from './services/githubAPI';
+import { fetchUserData } from './services/githubService';  // Changed from githubAPI
 import './App.css';
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
       </header>
       
       <main className="App-main">
-        <SearchBar onSearch={handleSearch} loading={loading} />
+        <Search onSearch={handleSearch} loading={loading} />
         <UserProfile user={user} error={error} loading={loading} />
       </main>
     </div>
