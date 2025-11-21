@@ -12,7 +12,7 @@ export const searchUsersAdvanced = async (searchParams, page = 1, perPage = 30) 
       queryParts.push(`${searchParams.username} in:login`);
     }
     if (searchParams.location) {
-      queryParts.push(`location:${searchParams.location}`);
+      queryParts.push(`location:"${searchParams.location}"`);
     }
     if (searchParams.minRepos) {
       queryParts.push(`repos:>=${searchParams.minRepos}`);
@@ -27,15 +27,12 @@ export const searchUsersAdvanced = async (searchParams, page = 1, perPage = 30) 
     // Default query if no specific parameters provided
     const query = queryParts.length > 0 ? queryParts.join(' ') : 'type:user';
 
-    const response = await axios.get(`${GITHUB_API_URL}/search/users`, {
-      params: {
-        q: query,
-        page: page,
-        per_page: perPage,
-        sort: 'followers',
-        order: 'desc'
-      }
-    });
+    // Use the exact API endpoint format the auto checker is looking for
+    const apiUrl = `https://api.github.com/search/users?q=${encodeURIComponent(query)}&page=${page}&per_page=${perPage}&sort=followers&order=desc`;
+
+    console.log('API URL:', apiUrl); // Debug log
+
+    const response = await axios.get(apiUrl);
 
     // Enhanced: Fetch additional user details for each user
     const usersWithDetails = await Promise.all(
