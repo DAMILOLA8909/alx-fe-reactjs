@@ -229,6 +229,10 @@
     width: 100%;
     max-width: 300px;
   }
+
+  .search-container {
+    width: 100%;
+  }
   
   .profile-header {
     flex-direction: column;
