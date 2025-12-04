@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // ADDED: Import Link
 import RecipeCard from './RecipeCard';
 import { Search, ChefHat, Clock, Award, Users } from 'lucide-react';
 
@@ -163,7 +164,10 @@ const HomePage = () => {
               key={recipe.id}
               className="transform hover:-translate-y-2 transition-all duration-300"
             >
-              <RecipeCard recipe={recipe} />
+              {/* ADDED: Wrap RecipeCard with Link for navigation */}
+              <Link to={`/recipe/${recipe.id}`} className="block">
+                <RecipeCard recipe={recipe} />
+              </Link>
             </div>
           ))}
         </div>
@@ -179,9 +183,11 @@ const HomePage = () => {
 
         {/* Call to Action */}
         <div className="mt-12 text-center">
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
-            Share Your Recipe
-          </button>
+          <Link to="/">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
+              Share Your Recipe
+            </button>
+          </Link>
           <p className="mt-4 text-gray-600 hover:text-gray-800 transition-colors duration-300">
             Join our community of food lovers today!
           </p>
