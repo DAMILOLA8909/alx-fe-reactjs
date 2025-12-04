@@ -5,12 +5,12 @@ import { Plus, Trash2, AlertCircle, CheckCircle, ChefHat, Clock, Users } from 'l
 const AddRecipeForm = () => {
   const navigate = useNavigate();
   
-  // Form state
+  // Form state - using "steps" instead of "instructions"
   const [formData, setFormData] = useState({
     title: '',
     summary: '',
     ingredients: [''],
-    instructions: [''],
+    steps: [''], // Changed from "instructions" to "steps"
     prepTime: '',
     cookTime: '',
     servings: '',
@@ -37,7 +37,7 @@ const AddRecipeForm = () => {
     }
   };
 
-  // Handle array field changes (ingredients, instructions)
+  // Handle array field changes (ingredients, steps)
   const handleArrayChange = (field, index, value) => {
     const newArray = [...formData[field]];
     newArray[index] = value;
@@ -47,7 +47,7 @@ const AddRecipeForm = () => {
     });
   };
 
-  // Add new ingredient or instruction field
+  // Add new ingredient or step field
   const addArrayField = (field) => {
     setFormData({
       ...formData,
@@ -55,7 +55,7 @@ const AddRecipeForm = () => {
     });
   };
 
-  // Remove ingredient or instruction field
+  // Remove ingredient or step field
   const removeArrayField = (field, index) => {
     if (formData[field].length > 1) {
       const newArray = formData[field].filter((_, i) => i !== index);
@@ -83,10 +83,10 @@ const AddRecipeForm = () => {
       newErrors.ingredients = 'At least one ingredient is required';
     }
 
-    // Validate instructions
-    const validInstructions = formData.instructions.filter(inst => inst.trim() !== '');
-    if (validInstructions.length === 0) {
-      newErrors.instructions = 'At least one instruction step is required';
+    // Validate steps - using "steps" instead of "instructions"
+    const validSteps = formData.steps.filter(step => step.trim() !== '');
+    if (validSteps.length === 0) {
+      newErrors.steps = 'At least one preparation step is required'; // Updated error message
     }
 
     // Numeric validations
@@ -128,7 +128,7 @@ const AddRecipeForm = () => {
       title: '',
       summary: '',
       ingredients: [''],
-      instructions: [''],
+      steps: [''], // Updated to "steps"
       prepTime: '',
       cookTime: '',
       servings: '',
@@ -383,13 +383,13 @@ const AddRecipeForm = () => {
               </div>
             </div>
 
-            {/* Instructions */}
+            {/* Preparation Steps - Changed from "Instructions" */}
             <div className="mb-10">
               <div className="flex items-center justify-between mb-6 pb-3 border-b border-gray-200">
-                <h2 className="text-xl font-bold text-gray-900">Instructions *</h2>
+                <h2 className="text-xl font-bold text-gray-900">Preparation Steps *</h2>
                 <button
                   type="button"
-                  onClick={() => addArrayField('instructions')}
+                  onClick={() => addArrayField('steps')}
                   className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
                 >
                   <Plus className="w-4 h-4" />
@@ -397,32 +397,32 @@ const AddRecipeForm = () => {
                 </button>
               </div>
 
-              {errors.instructions && (
+              {errors.steps && (
                 <div className="flex items-center gap-1 mb-4 text-red-600">
                   <AlertCircle className="w-5 h-5" />
-                  <span>{errors.instructions}</span>
+                  <span>{errors.steps}</span>
                 </div>
               )}
 
               <div className="space-y-4">
-                {formData.instructions.map((instruction, index) => (
+                {formData.steps.map((step, index) => (
                   <div key={index} className="flex items-start gap-4 group">
                     <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
                       {index + 1}
                     </div>
                     <div className="flex-1">
                       <textarea
-                        value={instruction}
-                        onChange={(e) => handleArrayChange('instructions', index, e.target.value)}
+                        value={step}
+                        onChange={(e) => handleArrayChange('steps', index, e.target.value)}
                         rows="3"
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                         placeholder={`Step ${index + 1}...`}
                       />
                     </div>
-                    {formData.instructions.length > 1 && (
+                    {formData.steps.length > 1 && (
                       <button
                         type="button"
-                        onClick={() => removeArrayField('instructions', index)}
+                        onClick={() => removeArrayField('steps', index)}
                         className="p-3 text-gray-400 hover:text-red-600 transition-colors group-hover:opacity-100 opacity-0"
                         aria-label="Remove step"
                       >
@@ -479,7 +479,7 @@ const AddRecipeForm = () => {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-600">•</span>
-              <span>Write clear, step-by-step instructions</span>
+              <span>Write clear, step-by-step preparation steps</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-600">•</span>
