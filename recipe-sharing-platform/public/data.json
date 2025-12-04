@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2c5?w=400&h=300&fit=crop",
+    "prepTime": 15,
+    "cookTime": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "rating": 4.5
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=300&fit=crop",
+    "prepTime": 30,
+    "cookTime": 40,
+    "servings": 6,
+    "difficulty": "Intermediate",
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "title": "Vegetable Stir Fry",
+    "summary": "Quick and healthy stir fry with colorful vegetables and soy sauce.",
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop",
+    "prepTime": 15,
+    "cookTime": 10,
+    "servings": 3,
+    "difficulty": "Easy",
+    "rating": 4.3
+  },
+  {
+    "id": 4,
+    "title": "Chocolate Brownies",
+    "summary": "Rich, fudgy chocolate brownies with walnuts and chocolate chips.",
+    "image": "https://images.unsplash.com/photo-1606313564200-75f2d4fa383b?w=400&h=300&fit=crop",
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 9,
+    "difficulty": "Intermediate",
+    "rating": 4.9
+  },
+  {
+    "id": 5,
+    "title": "Greek Salad",
+    "summary": "Fresh Mediterranean salad with feta cheese, olives, and olive oil dressing.",
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop",
+    "prepTime": 15,
+    "cookTime": 0,
+    "servings": 2,
+    "difficulty": "Easy",
+    "rating": 4.6
+  },
+  {
+    "id": 6,
+    "title": "Beef Bourguignon",
+    "summary": "French beef stew braised in red wine with carrots, onions, and mushrooms.",
+    "image": "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?w=400&h=300&fit=crop",
+    "prepTime": 30,
+    "cookTime": 120,
+    "servings": 6,
+    "difficulty": "Advanced",
+    "rating": 4.7
+  },
+  {
+    "id": 7,
+    "title": "Margherita Pizza",
+    "summary": "Classic Neapolitan pizza with tomato, mozzarella, and fresh basil.",
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop",
+    "prepTime": 45,
+    "cookTime": 15,
+    "servings": 4,
+    "difficulty": "Intermediate",
+    "rating": 4.8
+  },
+  {
+    "id": 8,
+    "title": "Avocado Toast",
+    "summary": "Simple and healthy breakfast with mashed avocado on toasted bread.",
+    "image": "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=400&h=300&fit=crop",
+    "prepTime": 10,
+    "cookTime": 5,
+    "servings": 1,
+    "difficulty": "Easy",
+    "rating": 4.4
+  }
+]
