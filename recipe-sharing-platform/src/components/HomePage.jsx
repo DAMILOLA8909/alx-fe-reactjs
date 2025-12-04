@@ -183,7 +183,7 @@ const HomePage = () => {
 
         {/* Call to Action */}
         <div className="mt-12 text-center">
-          <Link to="/">
+          <Link to="/add-recipe">
             <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105">
               Share Your Recipe
             </button>

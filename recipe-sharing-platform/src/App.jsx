@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import RecipeDetail from './components/RecipeDetail';
+import AddRecipeForm from './components/AddRecipeForm';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
                 <a href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
                 <a href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Recipes</a>
                 <a href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Categories</a>
-                <a href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Create</a>
+                <a href="/add-recipe" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">Create</a>
                 <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-300">
                   Sign In
                 </button>
@@ -39,6 +40,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
+            <Route path="/add-recipe" element={<AddRecipeForm />} />
           </Routes>
         </main>
 
