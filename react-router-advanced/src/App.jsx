@@ -22,12 +22,42 @@ import BlogLayout from './components/Blog/BlogLayout';
 import BlogList from './components/Blog/BlogList';
 import BlogPost from './components/Blog/BlogPost';
 
-// Error Pages
-import Unauthorized from './components/ErrorPages/Unauthorized';
-import NotFound from './components/ErrorPages/NotFound';
+// Error Pages - Remove these imports since they don't exist yet
+// import Unauthorized from './components/ErrorPages/Unauthorized';
+// import NotFound from './components/ErrorPages/NotFound';
 
-// Home Component
-const Home = () => (
+// Create simple inline error components since the files don't exist
+const Unauthorized = () => (
+  <div className="card">
+    <h2>Unauthorized Access</h2>
+    <p>You don't have permission to access this page.</p>
+    <button onClick={() => window.history.back()} className="btn">
+      Go Back
+    </button>
+  </div>
+);
+
+const NotFound = () => {
+  const { user } = useAuth();
+  
+  return (
+    <div className="card">
+      <h2>404 - Page Not Found</h2>
+      <p>The page you're looking for doesn't exist.</p>
+      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
+        <button onClick={() => window.history.back()} className="btn btn-secondary">
+          Go Back
+        </button>
+        <button onClick={() => window.location.href = '/'} className="btn">
+          Go Home
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Create Home component since we removed the import
+const HomeComponent = () => (
   <div className="card">
     <h1>Welcome to Advanced React Router Demo</h1>
     <p>This application demonstrates advanced routing techniques in React including:</p>
@@ -57,36 +87,6 @@ const Home = () => (
     </div>
   </div>
 );
-
-// Error Pages Components
-const Unauthorized = () => (
-  <div className="card">
-    <h2>Unauthorized Access</h2>
-    <p>You don't have permission to access this page.</p>
-    <button onClick={() => window.history.back()} className="btn">
-      Go Back
-    </button>
-  </div>
-);
-
-const NotFound = () => {
-  const { user } = useAuth();
-  
-  return (
-    <div className="card">
-      <h2>404 - Page Not Found</h2>
-      <p>The page you're looking for doesn't exist.</p>
-      <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-        <button onClick={() => window.history.back()} className="btn btn-secondary">
-          Go Back
-        </button>
-        <button onClick={() => window.location.href = '/'} className="btn">
-          Go Home
-        </button>
-      </div>
-    </div>
-  );
-};
 
 const App = () => {
   const { user } = useAuth();
