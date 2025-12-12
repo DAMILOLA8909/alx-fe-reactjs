@@ -420,3 +420,186 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Add these styles to the existing PostsComponent.css */
+
+.filter-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.user-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-filter label {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.user-input {
+  padding: 0.5rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  width: 120px;
+}
+
+.refetch-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-clear-refetch {
+  background: #fbd38d;
+  color: #744210;
+}
+
+.btn-clear-refetch:hover:not(:disabled) {
+  background: #f6ad55;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  background: #edf2f7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.demo-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.feature-item {
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #48bb78;
+}
+
+.feature-item h4 {
+  margin: 0 0 0.5rem 0;
+  color: #2d3748;
+}
+
+.feature-item p {
+  margin: 0 0 0.5rem 0;
+  color: #4a5568;
+}
+
+.feature-item small {
+  color: #718096;
+  font-style: italic;
+}
+
+.cache-actions {
+  background: #fffaf0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  border: 1px solid #fbd38d;
+}
+
+.cache-actions h4 {
+  margin: 0 0 1rem 0;
+  color: #744210;
+}
+
+.action-buttons-small {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-warning {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.btn-warning:hover {
+  background: #feb2b2;
+}
+
+.btn-info {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.btn-info:hover {
+  background: #90cdf4;
+}
+
+.cache-instructions {
+  background: #f0fff4;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #9ae6b4;
+}
+
+.cache-instructions h4 {
+  margin: 0 0 1rem 0;
+  color: #276749;
+}
+
+.cache-instructions ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #4a5568;
+}
+
+.cache-instructions li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .refetch-group {
+    flex-direction: column;
+  }
+  
+  .action-buttons-small {
+    flex-direction: column;
+  }
+  
+  .demo-features {
+    grid-template-columns: 1fr;
+  }
+}
