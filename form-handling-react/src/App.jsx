@@ -1,5 +1,5 @@
 import React from 'react';
-import ControlledForm from './components/RegistrationForm';
+import RegistrationForm from './components/RegistrationForm';
 import FormikForm from './components/FormikForm';
 import './App.css';
 
@@ -8,13 +8,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>React Form Handling Comparison</h1>
-        <p>Comparing Controlled Components vs Formik</p>
+        <p>Comparing Controlled Components vs Formik with Yup Validation</p>
       </header>
       
       <main className="main-content">
         <div className="forms-container">
           <div className="form-section">
-            <ControlledForm />
+            <RegistrationForm />
           </div>
           
           <div className="divider">
