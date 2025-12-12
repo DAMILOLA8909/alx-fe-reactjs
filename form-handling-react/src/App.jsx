@@ -1,5 +1,5 @@
 import React from 'react';
-import ControlledForm from './components/ControlledForm';
+import ControlledForm from './components/RegistrationForm';
 import FormikForm from './components/FormikForm';
 import './App.css';
 
